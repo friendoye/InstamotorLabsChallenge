@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion config.build.compileSdk
+    buildToolsVersion config.build.buildTools
+    defaultConfig {
+        applicationId "com.friendoye.ilchallenge.ch1"
+        minSdkVersion config.build.minSdk
+        targetSdkVersion config.build.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile deps.support.appCompat
+    compile deps.support.coordinatorLayout
+
+    compile deps.external.kotlin
+
+    compile deps.external.rxjava
+    compile deps.external.rxandroid
+    compile deps.external.rxbroadcasts
+
+    testCompile deps.test.junit
+    testCompile deps.test.spek
+    testCompile deps.external.kotlin
+    testCompile deps.test.mockitoKotlin
+}

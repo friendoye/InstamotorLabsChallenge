@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Challenge 1: Online ticker</string>
+    <string name="ticker_formatter">Ticker: %s</string>
+</resources>

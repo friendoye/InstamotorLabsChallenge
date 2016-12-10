@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_online_timer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.friendoye.ilchallenge.OnlineTimerActivity">
+
+    <TextView
+        android:text="Connectivity status:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_connectivity"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textAlignment="textStart" />
+
+    <View
+        android:layout_width="16dp"
+        android:background="@drawable/circle_shape"
+        android:id="@+id/view_conn_circle"
+        android:layout_height="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_connectivity"
+        app:layout_constraintTop_toTopOf="@+id/text_connectivity"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/text_connectivity"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_ticker"
+        tools:text="@string/ticker_formatter"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintRight_toRightOf="@+id/view_conn_circle"
+        app:layout_constraintLeft_toLeftOf="@+id/text_connectivity" />
+
+</android.support.constraint.ConstraintLayout>

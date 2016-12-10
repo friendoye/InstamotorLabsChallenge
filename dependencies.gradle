@@ -1,0 +1,48 @@
+def versions = [
+        supportVersion : '25.0.1',
+        kotlinVersion  : '1.0.5-2'
+]
+
+def plugins = [
+        android : 'com.android.tools.build:gradle:2.2.2',
+        kotlin  : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinVersion}"
+]
+
+def buildConfig = [
+        compileSdk : 25,
+        buildTools : '25.0.1',
+        minSdk     : 15,
+        targetSdk  : 25
+]
+
+def external = [
+        rxjava       : 'io.reactivex:rxjava:1.1.8',
+        rxandroid    : 'io.reactivex:rxandroid:1.2.1',
+        rxbroadcasts : 'com.cantrowitz:rxbroadcast:1.1.0',
+        kotlin       : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}"
+]
+
+def support = [
+        appCompat : "com.android.support:appcompat-v7:${versions.supportVersion}",
+        coordinatorLayout : 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+]
+
+def test = [
+        espressoCore   : 'com.android.support.test.espresso:espresso-core:2.2.2',
+        espressoRunner : 'com.android.support.test:runner:0.5',
+        junit          : 'junit:junit:4.12',
+        mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.0.0',
+        spek           : 'org.jetbrains.spek:spek:1.0.25'
+]
+
+ext.config = [
+        "build" : buildConfig
+]
+
+ext.deps = [
+        "versions" : versions,
+        "plugins"  : plugins,
+        "external" : external,
+        "support"  : support,
+        "test"     : test
+]
