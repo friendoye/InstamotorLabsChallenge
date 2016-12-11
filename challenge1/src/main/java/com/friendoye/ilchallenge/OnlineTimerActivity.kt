@@ -4,8 +4,10 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.getColor
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.friendoye.ilchallenge.ObservableProducer.getConnectivityObservable
 import kotlinx.android.synthetic.main.activity_online_timer.*
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -38,7 +40,9 @@ class OnlineTimerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_online_timer)
 
         connectionEstablishedAnimator = ValueAnimator.ofObject(
-                ArgbEvaluator(), getColor(R.color.red), getColor(R.color.green))
+                ArgbEvaluator(),
+                getColor(this, R.color.red),
+                getColor(this, R.color.green))
                 .setDuration(1000)
 
         val connCircleBackground = view_conn_circle.background as GradientDrawable
@@ -49,8 +53,11 @@ class OnlineTimerActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        val connectivityObservable = getConnectivityObservable(this)
+
         complexSubscription.add(tickerObservable
-                .connectionCheck(this)
+                // we are interested only in events, when connection established
+                .connectionCheck(connectivityObservable.filter { it })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ number ->
                     text_ticker.text = getString(R.string.ticker_formatter, number)
@@ -59,7 +66,7 @@ class OnlineTimerActivity : AppCompatActivity() {
                 })
         )
 
-        complexSubscription.add(ObservableProducer.getConnectivityObservable(this)
+        complexSubscription.add(connectivityObservable
                 .subscribe( { connected ->
                     internetConnected = connected
                 }, { error ->
@@ -74,7 +81,7 @@ class OnlineTimerActivity : AppCompatActivity() {
 
     private fun updateConnectionStatusUi(connected: Boolean) {
         val colorRes = if (connected) R.color.green else R.color.red
-        (view_conn_circle.background as GradientDrawable)
-                .setColor(getColor(colorRes))
+        (view_conn_circle.background as GradientDrawable).setColor(
+                getColor(this, colorRes))
     }
 }

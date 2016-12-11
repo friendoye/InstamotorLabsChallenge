@@ -19,6 +19,7 @@ def external = [
         rxjava       : 'io.reactivex:rxjava:1.1.8',
         rxandroid    : 'io.reactivex:rxandroid:1.2.1',
         rxbroadcasts : 'com.cantrowitz:rxbroadcast:1.1.0',
+        rxrelay      : 'com.jakewharton.rxrelay:rxrelay:1.2.0',
         kotlin       : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}"
 ]
 
@@ -31,7 +32,6 @@ def test = [
         espressoCore   : 'com.android.support.test.espresso:espresso-core:2.2.2',
         espressoRunner : 'com.android.support.test:runner:0.5',
         junit          : 'junit:junit:4.12',
-        mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.0.0',
         spek           : 'org.jetbrains.spek:spek:1.0.25'
 ]
 
