@@ -35,9 +35,9 @@ dependencies {
     compile deps.external.rxjava
     compile deps.external.rxandroid
     compile deps.external.rxbroadcasts
+    compile deps.external.rxrelay
 
     testCompile deps.test.junit
     testCompile deps.test.spek
     testCompile deps.external.kotlin
-    testCompile deps.test.mockitoKotlin
 }
